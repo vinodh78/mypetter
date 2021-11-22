@@ -13,7 +13,7 @@ var app = express();
 
 // view engine setup
 app.engine('html', es6Renderer)
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, 'mypetter'));
 app.set('view engine', 'html');
 
 app.use(logger('dev'));
