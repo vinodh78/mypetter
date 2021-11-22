@@ -20,7 +20,7 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'mypet/mypetter')));
+app.use(express.static(path.join(__dirname, 'mypetter')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
