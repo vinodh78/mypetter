@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <!--[if IE]>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <![endif]-->
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="">
+      <meta name="author" content="">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #474e5d;
+  font-family: Helvetica, sans-serif;
+}
+
+/* The actual timeline (the vertical ruler) */
+.timeline {
+  position: absolute;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* The actual timeline (the vertical ruler) */
+.timeline::after {
+  content: '';
+  position: absolute;
+  width: 6px;
+  background-color: white;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -3px;
+}
+
+/* Container around content */
+.container {
+  padding: 10px 40px;
+  position: relative;
+  background-color: inherit;
+  width: 50%;
+}
+
+/* The circles on the timeline */
+.container::after {
+  content: '';
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  right: -17px;
+  background-color: white;
+  border: 4px solid #FF9F55;
+  top: 15px;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+/* Place the container to the left */
+.left {
+  left: 0;
+}
+
+/* Place the container to the right */
+.right {
+  left: 50%;
+}
+
+/* Add arrows to the left container (pointing right) */
+.left::before {
+  content: " ";
+  height: 0;
+  position: absolute;
+  top: 22px;
+  width: 0;
+  z-index: 1;
+  right: 30px;
+  border: medium solid white;
+  border-width: 10px 0 10px 10px;
+  border-color: transparent transparent transparent white;
+}
+
+/* Add arrows to the right container (pointing left) */
+.right::before {
+  content: " ";
+  height: 0;
+  position: absolute;
+  top: 22px;
+  width: 0;
+  z-index: 1;
+  left: 30px;
+  border: medium solid white;
+  border-width: 10px 10px 10px 0;
+  border-color: transparent white transparent transparent;
+}
+
+/* Fix the circle for containers on the right side */
+.right::after {
+  left: -16px;
+}
+
+/* The actual content */
+.content {
+  padding: 20px 30px;
+  background-color: white;
+  position: relative;
+  border-radius: 6px;
+}
+
+/* Media queries - Responsive timeline on screens less than 600px wide */
+@media screen and (max-width: 600px) {
+  /* Place the timelime to the left */
+  .timeline::after {
+  left: 31px;
+  }
+  
+  /* Full-width containers */
+  .container {
+  width: 100%;
+  padding-left: 70px;
+  padding-right: 25px;
+  }
+  
+  /* Make sure that all arrows are pointing leftwards */
+  .container::before {
+  left: 60px;
+  border: medium solid white;
+  border-width: 10px 10px 10px 0;
+  border-color: transparent white transparent transparent;
+  }
+
+  /* Make sure all circles are at the same spot */
+  .left::after, .right::after {
+  left: 15px;
+  }
+  
+  /* Make all right containers behave like the left ones */
+  .right {
+  left: 0%;
+  }
+}
+</style>
+      <!-- page title -->
+      <title>MYPET ter!</title>
+      <!--[if lt IE 9]>
+      <script src="js/respond.js"></script>
+      <![endif]-->
+      <!-- Font files -->
+      <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700%7CQuicksand:400,500,700" rel="stylesheet">
+      <link href="fonts/flaticon/flaticon.css" rel="stylesheet" type="text/css">
+      <link href="fonts/fontawesome/fontawesome-all.min.css" rel="stylesheet" type="text/css">
+      <!-- Fav icons -->
+      <link rel="apple-touch-icon" sizes="57x57" href="apple-icon-57x57.png">
+      <link rel="apple-touch-icon" sizes="72x72" href="apple-icon-72x72.png">
+      <link rel="apple-touch-icon" sizes="114x114" href="apple-icon-114x114.png">
+      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+      <!-- Bootstrap core CSS -->
+      <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+      <!-- style CSS -->
+      <link href="css/style.css" rel="stylesheet">
+      <!-- plugins CSS -->
+      <link href="css/plugins.css" rel="stylesheet">
+      <!-- Colors CSS -->
+      <link href="styles/maincolors.css" rel="stylesheet">
+	  
+
+  </head>
+   <!-- ==== body starts ==== -->
+   <body id="top">
+      <!-- Preloader -->
+      <div id="preloader">
+         <div class="spinner">
+            <div class="bounce1"></div>
+         </div>
+         <!-- /spinner -->
+      </div>
+      <!-- /Preloader ends -->
+      <nav id="main-nav" class="navbar-expand-xl fixed-top">
+         <div class="row">
+
+            <!-- Navbar Starts -->
+            <div class="navbar container-fluid">
+               <div class="container ">
+                  <!-- logo -->
+                  <a class="navbar-brand" href="index.html">
+                  <i class="flaticon-dog-20"></i><span><font size=12>MyPet</font>ter!</span>
+                  </a>
+                         <!-- Start Social Links -->
+                        <ul class="social-list float-right list-inline">
+                           <li class="list-inline-item"><a title="Facebook" href="#"><i class="fab fa-facebook-f"></i></a></li>
+                           <li class="list-inline-item"><a title="Twitter" href="#"><i class="fab fa-twitter"></i></a></li>
+                           <li class="list-inline-item"><a  title="Instagram" href="#"><i class="fab fa-instagram"></i></a></li>
+                        </ul>
+                        <!-- /End Social Links -->
+               <!-- /container -->
+            </div>
+            <!-- /navbar -->
+         </div>
+         <!--/row -->
+      </nav>
+      <!-- /nav -->
+      <!-- Jumbotron -->
+      <div class="jumbotron jumbotron-fluid overlay">
+         <div class="jumbo-heading">
+            <!-- section-heading -->
+            <div class="section-heading" data-aos="zoom-in">
+               <h1>About Us</h1>
+            </div>
+            <!-- /section-heading -->
+         </div>
+         <!-- /jumbo-heading -->
+      </div>
+      <!-- /jumbotron -->
+      <!-- ==== Page Content ==== -->
+      <div class="page">
+         <div class="container block-padding pt-0">
+            <div class="row">
+               <div class="col-lg-6">
+                  <h3>Caring for your pets</h3>
+                  <p>MyPetter is a community-driven project. We are a MYPET in the crypto sphere. And we declared to disrupt the space with our crypto Vault – Security to make crypto space safer for millions. There is no other coin or token that exist today on the crypto space that is more ambitious and aggressive than our team here at MyPetter.</p> 
+				  <p> Our community strength is unparalleled and we will vaporize all memecoins in our path with our Godzilla atomic breath!</p>
+                  
+                  <ul class="custom pl-0">
+                     <li>Mission: To rescue, rehabilitate and rehome animals in crisis, ensure healthy pets through education, advocacy and affordable services, and inspire a community where the animal-human bond is celebrated and nurtured.</li>
+                     <li>Vision: A humane and compassionate future for every animal friend.</li>
+                     <li>With this new Mission as our guide – and with your support, input and involvement – we look forward to the year ahead and our promise of a humane and compassionate future for every animal friend.</li>
+                  </ul>
+                  <!-- /ul -->
+               </div>
+               <!-- image -->
+               <div class="col-lg-6">
+                  <img src="img/about2.jpg" alt="" class="img-fluid border-irregular1"   data-aos="zoom-in">
+               </div>
+            </div>
+            <!-- /row -->
+         </div>
+         <!-- /container -->
+         <div class="bg-light-custom block-padding">
+            <div class="container">
+               <div id="counter" class="row">
+                  <!-- Counter -->
+                  <div class="col-xl-3 col-md-6">
+                     <div class="counter">
+                        <i class="counter-icon fa fa-users"></i>
+                        <!-- insert your final value on data-count= -->
+                        <div class="counter-value" data-count="1500">0</div>
+                        <h3 class="title">Happy Clients</h3>
+                     </div>
+                     <!-- /counter -->
+                  </div>
+                  <!-- /col-lg -->
+                  <!-- Counter -->
+                  <div class="col-xl-3 col-md-6">
+                     <div class="counter">
+                        <i class="counter-icon flaticon-dog-in-front-of-a-man"></i>
+                        <!-- insert your final value on data-count= -->
+                        <div class="counter-value" data-count="14">0</div>
+                        <h3 class="title">Professionals</h3>
+                     </div>
+                     <!-- /counter -->
+                  </div>
+                  <!-- /col-lg -->
+                  <!-- Counter -->
+                  <div class="col-xl-3 col-md-6">
+                     <div class="counter">
+                        <i class="counter-icon flaticon-dog-2"></i>
+                        <!-- insert your final value on data-count= -->
+                        <div class="counter-value" data-count="900">0</div>
+                        <h3 class="title">Adopted Pets</h3>
+                     </div>
+                     <!-- /counter -->
+                  </div>
+                  <!-- /col-lg -->
+                  <!-- Counter -->
+                  <div class="col-xl-3 col-md-6">
+                     <div class="counter">
+                        <i class="counter-icon flaticon-prize-badge-with-paw-print"></i>
+                        <!-- insert your final value on data-count= -->
+                        <div class="counter-value" data-count="12">0</div>
+                        <h3 class="title">Competitions</h3>
+                     </div>
+                     <!-- /counter -->
+                  </div>
+                  <!-- /col-lg -->
+               </div>
+               <!-- /row -->
+            </div>
+            <!-- /container -->
+         </div>
+         <!-- /block-padding -->
+         <div class="container bottom-block-padding">
+            <h3 class="text-center">Our Roadmap</h3>
+            <div class="col-md-12 mt-5">
+               <div id="owl-testimonial" class="owl-carousel owl-theme">
+                  <!-- testimonial -->
+                  <div class="testimonial">
+                     <div class="content">
+                        <p class="description">
+                           We've got the expertise and we've got the passion. And we've got the road map. So together, we are creating progressive new initiatives while growing the programs - trap-neuter-return for community cats, shelter foster networking, online resource centers to provide neighborhood support and more - that have already brought us close to our goal.                        
+                        </p>
+                     </div>
+                     <!-- /content -->
+                     <div class="testimonial-pic">
+                        <img src="img/team/team1.jpg" class="img-fluid" alt="">
+                     </div>
+                     <!-- /testimonial-pic -->
+                     <div class="testimonial-review">
+                        <h5 class="testimonial-title">Q1 - 2022</h5>
+                        <span>Jan ~ Mar </span>
+                     </div>
+                     <!-- /testimonial-review -->
+                  </div>
+                  <!-- /testimonial -->
+                  <!-- testimonial -->
+                  <div class="testimonial">
+                     <div class="content">
+                        <p class="description">
+                           Dogs and cats at our sanctuary and in our lifesaving centers receive all the love, care and medical treatment they need - be it lifesaving surgery or life-changing training sessions - to find homes of their own. And because we know a home is the best place for companion animals, Best Friends implements programs around the country that both prevent pets from having to enter shelters in the first place and get those who do adopted more quickly.                        
+                        </p>
+                     </div>
+                     <!-- /content -->
+                     <div class="testimonial-pic">
+                        <img src="img/team/team2.jpg" class="img-fluid" alt="">
+                     </div>
+                     <!-- /testimonial-pic -->
+                     <div class="testimonial-review">
+                        <h5 class="testimonial-title">Q2 - 2022</h5>
+                        <span>Apr ~ Jun</span>
+                     </div>
+                     <!-- /testimonial-review -->
+                  </div>
+                  <!-- /testimonial -->
+                  <!-- testimonial -->
+                  <div class="testimonial">
+                     <div class="content">
+                        <p class="description">
+                           Pet Adoption :
+With millions of dogs and cats in shelters each year looking for new homes - and about 347,000 killed simply because they aren't chosen - there's no need to buy from a breeder or pet store. Best Friends is committed to removing the barriers to adoption for people who want to provide a loving home for pets who need them and to ensuring the entire process is positive and accessible for everyone.						   
+                        </p>
+                     </div>
+                     <!-- /content -->
+                     <div class="testimonial-pic">
+                        <img src="img/team/team3.jpg" class="img-fluid" alt="">
+                     </div>
+                     <!-- /testimonial-pic -->
+                     <div class="testimonial-review">
+                        <h5 class="testimonial-title">Q3 - 2022</h5>
+                        <span>Jul ~ Sep</span>
+                     </div>
+                     <!-- /testimonial-review -->
+                  </div>
+                  <!-- /testimonial -->
+               </div>
+               <!-- /owl-testimonial -->
+            </div>
+
+
+            <!-- /col-md-12 -->
+         </div>
+
+
+         <!-- /container -->
+      </div>
+      <!-- /page -->
+
+
+      <!-- ==== footer ==== -->
+      <footer class="text-light">
+	  
+         <div class="container">
+            <div class="row">
+               <div class="col-lg-6 center">
+                  <a class="navbar-brand" href="index.html"><center><i class="flaticon-dog-20"></i><span>MyPetter!</span></center></a>
+               </div>
+               <!--/ col-lg -->
+
+               <!--/ col-lg -->
+
+               <!--/ col-lg -->
+            </div>
+         </div>
+		 </div>
+		 
+		 
+		 
+		 </div>
+         <!--/ container -->
+         <!-- Go To Top Link -->
+         <div class="page-scroll hidden-sm hidden-xs">
+            <a href="#top" class="back-to-top"><i class="fa fa-angle-up"></i></a>
+         </div>
+         <!--/page-scroll-->
+      </footer>
+      <!--/ footer-->
+      <!-- Bootstrap core & Jquery -->
+      <script src="vendor/jquery/jquery.min.js"></script>
+      <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+      <!-- Custom Js -->
+      <script src="js/custom.js"></script>
+      <script src="js/plugins.js"></script>
+      <!-- number counter script -->
+      <script src="js/counter.js"></script>
+	  <!-- Prefix free -->
+      <script src="js/prefixfree.min.js"></script>
+
+   </body>
+</html>
